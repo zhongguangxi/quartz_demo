@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: demo-excel
+  datasource:
+    url: jdbc:mysql://rm-wz98pa666f242ic2rlo.mysql.rds.aliyuncs.com:3306/quartz_demo?zeroDateTimeBehavior=convertToNull
+    password: quartz_demo
+    username: quartz_demo
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: datasource1
+  quartz:
+    # quartz任务存储类型：jdbc或memory
+    job-store-type: jdbc
+    # 关闭时等待任务完成
+    wait-for-jobs-to-complete-on-shutdown: true
+    # 可以覆盖已有的任务
+    overwrite-existing-jobs: true
+    properties:
+      org:
+        quartz:
+          scheduler:
+            # 调度器实例名称
+            instanceName: scheduler
+            # 调度器实例ID自动生成
+            instanceId: AUTO
+          jobStore:
+            class: org.springframework.scheduling.quartz.LocalDataSourceJobStore
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            # quartz相关表前缀
+            tablePrefix: QRTZ_
+            useProperties: false
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            # 设置并发线程数量
+            threadCount: 10
+            # 指定线程优先级
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+server:
+  port: 8190
+mybatis-plus:
+  mapper-locations: classpath*:/mapperxml/*.xml
