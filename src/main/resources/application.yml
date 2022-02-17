@@ -2,7 +2,7 @@ spring:
   application:
     name: demo-excel
   datasource:
-    url: jdbc:mysql://rm-wz98pa666f242ic2rlo.mysql.rds.aliyuncs.com:3306/quartz_demo?zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://rm-xxx.mysql.rds.aliyuncs.com:3306/quartz_demo?zeroDateTimeBehavior=convertToNull
     password: quartz_demo
     username: quartz_demo
     driver-class-name: com.mysql.cj.jdbc.Driver
